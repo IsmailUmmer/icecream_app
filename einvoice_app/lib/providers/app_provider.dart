@@ -9,12 +9,14 @@ class AppProvider extends ChangeNotifier {
   static const _transactionsKey = 'transactions_v1';
   static const _currencyKey = 'currency_v1';
   static const _clientsKey = 'clients_v1';
+  static const _itemsKey = 'master_items_v1';
 
   double _balance = 12500.00;
   List<InvoiceModel> _invoices = [];
   List<TransactionModel> _transactions = [];
   String _currency = '₹';
   List<Party> _clients = [];
+  List<InvoiceItemModel> _masterItems = [];
 
   AppProvider() {
     _initialLoad();
@@ -25,6 +27,7 @@ class AppProvider extends ChangeNotifier {
   List<TransactionModel> get transactions => _transactions;
   String get currency => _currency;
   List<Party> get clients => _clients;
+  List<InvoiceItemModel> get masterItems => _masterItems;
 
   String get nextInvoiceNumber {
     if (_invoices.isEmpty) return 'INV-001';
@@ -76,6 +79,12 @@ class AppProvider extends ChangeNotifier {
                 .map((s) => Party.fromJson(jsonDecode(s) as Map<String, dynamic>))
                 .toList()
             : [];
+        final itemsJson = prefs.getStringList(_itemsKey);
+        _masterItems = itemsJson != null
+            ? itemsJson
+                .map((s) => InvoiceItemModel.fromJson(jsonDecode(s) as Map<String, dynamic>))
+                .toList()
+            : [];
         _recalculateBalance();
         notifyListeners();
       }
@@ -95,6 +104,8 @@ class AppProvider extends ChangeNotifier {
       await prefs.setString(_currencyKey, _currency);
       await prefs.setStringList(
           _clientsKey, _clients.map((c) => jsonEncode(c.toJson())).toList());
+      await prefs.setStringList(
+          _itemsKey, _masterItems.map((i) => jsonEncode(i.toJson())).toList());
     } catch (e) {
       debugPrint('Storage save failed: $e');
     }
@@ -194,7 +205,12 @@ class AppProvider extends ChangeNotifier {
     ];
     _clients = [
       Party(name: 'Robert', phone: '+1 2344 4478 899', email: 'robert@example.com', address: '123 Client St'),
-      Party(name: 'Amanda Saphira', phone: '+1 9876 5432 100', email: 'amanda@example.com', address: '456 Designer Ave'),
+      Party(name: 'Amanda Saphira', phone: '+1 987 654 321 00', email: 'amanda@example.com', address: '456 Designer Ave'),
+    ];
+    _masterItems = [
+      InvoiceItemModel(id: '1', name: 'UI Design', price: 350.00, category: 'Services'),
+      InvoiceItemModel(id: '2', name: 'Web Development', price: 1200.00, category: 'Services'),
+      InvoiceItemModel(id: '3', name: 'Consultation', price: 150.00, category: 'Consultation'),
     ];
     _recalculateBalance();
     notifyListeners();
@@ -208,6 +224,18 @@ class AppProvider extends ChangeNotifier {
 
   Future<void> removeClient(String name) async {
     _clients.removeWhere((c) => c.name == name);
+    notifyListeners();
+    await _persist();
+  }
+
+  Future<void> addMasterItem(InvoiceItemModel item) async {
+    _masterItems.insert(0, item);
+    notifyListeners();
+    await _persist();
+  }
+
+  Future<void> removeMasterItem(String id) async {
+    _masterItems.removeWhere((i) => i.id == id);
     notifyListeners();
     await _persist();
   }

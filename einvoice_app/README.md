@@ -1,3 +1,3 @@
-# einvoice_app
+# Invoicing App
 
 A new Flutter project.

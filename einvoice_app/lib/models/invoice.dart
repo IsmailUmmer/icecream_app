@@ -13,7 +13,7 @@ class InvoiceItemModel {
   InvoiceItemModel({
     required this.id,
     required this.name,
-    required this.quantity,
+    this.quantity = 1,
     required this.price,
     this.description = '',
     this.category = 'Services',

@@ -23,7 +23,7 @@ class EinvoiceApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'E-Invoice App',
+      title: 'Invoicing App',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF34A853)),
         useMaterial3: true,

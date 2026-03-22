@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/app_provider.dart';
 import '../screens/clients_screen.dart';
+import '../screens/items_screen.dart';
 
 class AppDrawer extends StatelessWidget {
   const AppDrawer({super.key});
@@ -78,7 +79,15 @@ class AppDrawer extends StatelessWidget {
                     Navigator.push(context, MaterialPageRoute(builder: (context) => const ClientsScreen()));
                   },
                 ),
-                _buildDrawerItem(Icons.inventory_2_outlined, 'Items', count: '09'),
+                _buildDrawerItem(
+                  Icons.inventory_2_outlined, 
+                  'Items', 
+                  count: provider.masterItems.length.toString().padLeft(2, '0'),
+                  onTap: () {
+                    Navigator.pop(context);
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => const ItemsScreen()));
+                  },
+                ),
                 _buildDrawerItem(Icons.bar_chart_outlined, 'Report'),
                 _buildDrawerItem(Icons.picture_as_pdf_outlined, 'PDF Invoices'),
                 _buildDrawerItem(
