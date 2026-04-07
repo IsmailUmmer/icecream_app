@@ -4,8 +4,10 @@ A premium, modern invoicing and stock management application built with Flutter.
 
 <div align="center">
   <h3>✨ App Demonstration</h3>
-  <video src="appsample.mp4" width="400" controls></video>
+
+  ![App Demo](appsample.mp4)
 </div>
+
 
 
 ## 🚀 Recent Updates (Inventory Management & UI Overhaul)
