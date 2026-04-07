@@ -7,9 +7,11 @@ import '../services/pdf_service.dart';
 import '../services/qr_service.dart';
 import '../utils/app_keys.dart';
 import 'create_invoice_screen.dart';
+import 'profile_screen.dart';
 
 class DashboardScreen extends StatefulWidget {
-  const DashboardScreen({super.key});
+  final VoidCallback? onProfileTap;
+  const DashboardScreen({super.key, this.onProfileTap});
 
   @override
   State<DashboardScreen> createState() => _DashboardScreenState();
@@ -52,7 +54,12 @@ class _DashboardScreenState extends State<DashboardScreen> {
         centerTitle: false,
         actions: [
           IconButton(icon: const Icon(Icons.notifications_none, color: Colors.black87), onPressed: () {}),
-          const CircleAvatar(radius: 18, backgroundImage: NetworkImage('https://i.pravatar.cc/150?u=ismail')),
+          InkWell(
+            onTap: () {
+               Navigator.push(context, MaterialPageRoute(builder: (context) => const ProfileScreen()));
+            },
+            child: const CircleAvatar(radius: 18, backgroundImage: NetworkImage('https://i.pravatar.cc/150?u=ismail')),
+          ),
           const SizedBox(width: 16),
         ],
       ),

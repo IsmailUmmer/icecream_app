@@ -4,6 +4,7 @@ import 'reports_screen.dart';
 import 'profile_screen.dart';
 import 'send_money_screen.dart';
 import 'create_invoice_screen.dart';
+import 'items_screen.dart';
 import '../widgets/app_drawer.dart';
 import '../utils/app_keys.dart';
 
@@ -16,14 +17,19 @@ class MainNavigation extends StatefulWidget {
 
 class _MainNavigationState extends State<MainNavigation> {
   int _currentIndex = 0;
+  late List<Widget> _screens;
 
-  final List<Widget> _screens = [
-    const DashboardScreen(),
-    const SendMoneyScreen(),
-    const SizedBox.shrink(), // Placeholder for the FAB location
-    const ReportsScreen(),
-    const ProfileScreen(),
-  ];
+  @override
+  void initState() {
+    super.initState();
+    _screens = [
+      DashboardScreen(onProfileTap: () => setState(() => _currentIndex = 4)), // Now navigates to Items
+      const SendMoneyScreen(),
+      const SizedBox.shrink(), // FAB Placeholder
+      const ReportsScreen(),
+      const ItemsScreen(),
+    ];
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -63,7 +69,7 @@ class _MainNavigationState extends State<MainNavigation> {
             BottomNavigationBarItem(icon: Icon(Icons.account_balance_wallet_rounded, size: 26), label: 'Wallets'),
             BottomNavigationBarItem(icon: Icon(Icons.add, color: Colors.transparent), label: ''),
             BottomNavigationBarItem(icon: Icon(Icons.pie_chart_rounded, size: 26), label: 'Reports'),
-            BottomNavigationBarItem(icon: Icon(Icons.person_rounded, size: 26), label: 'Profile'),
+            BottomNavigationBarItem(icon: Icon(Icons.inventory_2_rounded, size: 26), label: 'Items'),
           ],
         ),
       ),

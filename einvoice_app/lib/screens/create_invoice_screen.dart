@@ -358,10 +358,10 @@ class _CreateInvoiceScreenState extends State<CreateInvoiceScreen> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(item.name, style: const TextStyle(fontWeight: FontWeight.w500)),
-                      Text('${item.quantity} x \$${item.price.toStringAsFixed(0)}', style: TextStyle(color: Colors.grey.shade500, fontSize: 12)),
+                      Text('${item.quantity} x ${_invoiceInfo.currency}${item.price.toStringAsFixed(0)}', style: TextStyle(color: Colors.grey.shade500, fontSize: 12)),
                     ],
                   ),
-                  Text('\$${item.total.toStringAsFixed(0)}', style: const TextStyle(fontWeight: FontWeight.bold)),
+                  Text('${_invoiceInfo.currency}${item.total.toStringAsFixed(0)}', style: const TextStyle(fontWeight: FontWeight.bold)),
                 ],
               ),
             ),
@@ -383,15 +383,15 @@ class _CreateInvoiceScreenState extends State<CreateInvoiceScreen> {
         children: [
           _summaryRow('Discount', 'Enter Amt', isAction: true),
           const Divider(height: 24),
-          _summaryRow('Tax', '\$0', isAction: true),
+          _summaryRow('Tax', '${_invoiceInfo.currency}0', isAction: true),
           const Divider(height: 24),
-          _summaryRow('Shipping', '\$0', isAction: true),
+          _summaryRow('Shipping', '${_invoiceInfo.currency}0', isAction: true),
           const Divider(height: 24),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               const Text('Total Amt', style: TextStyle(fontWeight: FontWeight.w900, fontSize: 16)),
-              Text('\$${totalAmount.toStringAsFixed(0)}', style: const TextStyle(fontWeight: FontWeight.w900, fontSize: 16)),
+              Text('${_invoiceInfo.currency}${totalAmount.toStringAsFixed(0)}', style: const TextStyle(fontWeight: FontWeight.w900, fontSize: 16)),
             ],
           ),
         ],

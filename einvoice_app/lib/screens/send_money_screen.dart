@@ -73,7 +73,7 @@ class SendMoneyScreen extends StatelessWidget {
                 children: [
                   const Text('Available Balance', style: TextStyle(fontSize: 16, color: Colors.black54)),
                   const SizedBox(height: 8),
-                  Text('\$ ${provider.balance.toStringAsFixed(2)}', style: const TextStyle(fontSize: 32, fontWeight: FontWeight.w900, color: Color(0xFF34A853))),
+                  Text('${provider.currency} ${provider.balance.toStringAsFixed(2)}', style: const TextStyle(fontSize: 32, fontWeight: FontWeight.w900, color: Color(0xFF34A853))),
                 ],
               ),
             ),
@@ -92,7 +92,7 @@ class SendMoneyScreen extends StatelessWidget {
               child: Text('Recent Transfers', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
             ),
             const SizedBox(height: 20),
-            ...provider.transactions.map((tx) => _recentItem(tx.name, '\$ ${tx.amount.toStringAsFixed(2)}', tx.status == TransactionStatus.success ? 'Success' : 'Processing')).toList(),
+            ...provider.transactions.map((tx) => _recentItem(tx.name, '${provider.currency} ${tx.amount.toStringAsFixed(2)}', tx.status == TransactionStatus.success ? 'Success' : 'Processing')).toList(),
           ],
         ),
       ),

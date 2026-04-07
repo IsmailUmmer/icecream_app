@@ -234,6 +234,15 @@ class AppProvider extends ChangeNotifier {
     await _persist();
   }
 
+  Future<void> updateMasterItem(InvoiceItemModel item) async {
+    final index = _masterItems.indexWhere((i) => i.id == item.id);
+    if (index != -1) {
+      _masterItems[index] = item;
+      notifyListeners();
+      await _persist();
+    }
+  }
+
   Future<void> removeMasterItem(String id) async {
     _masterItems.removeWhere((i) => i.id == id);
     notifyListeners();

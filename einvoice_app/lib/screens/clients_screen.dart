@@ -32,7 +32,7 @@ class ClientsScreen extends StatelessWidget {
                   context,
                   MaterialPageRoute(builder: (context) => BillToScreen(party: Party())),
                 );
-                if (result != null && result is Party) {
+                if (result != null && result is Party && result.name.trim().isNotEmpty) {
                   provider.addClient(result);
                 }
               },

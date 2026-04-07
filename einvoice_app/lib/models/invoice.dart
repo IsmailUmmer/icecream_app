@@ -7,6 +7,9 @@ class InvoiceItemModel {
   final String name;
   final int quantity;
   final double price;
+  final double purchasePrice;
+  final double stock;
+  final double reservedQty;
   final String description;
   final String category;
 
@@ -15,17 +18,24 @@ class InvoiceItemModel {
     required this.name,
     this.quantity = 1,
     required this.price,
+    this.purchasePrice = 0.0,
+    this.stock = 0.0,
+    this.reservedQty = 0.0,
     this.description = '',
     this.category = 'Services',
   });
 
   double get total => quantity * price;
+  double get availableQty => stock - reservedQty;
 
   Map<String, dynamic> toJson() => {
         'id': id,
         'name': name,
         'quantity': quantity,
         'price': price,
+        'purchasePrice': purchasePrice,
+        'stock': stock,
+        'reservedQty': reservedQty,
         'description': description,
         'category': category,
       };
@@ -36,6 +46,9 @@ class InvoiceItemModel {
         name: json['name'] as String,
         quantity: json['quantity'] as int,
         price: (json['price'] as num).toDouble(),
+        purchasePrice: (json['purchasePrice'] as num? ?? 0.0).toDouble(),
+        stock: (json['stock'] as num? ?? 0.0).toDouble(),
+        reservedQty: (json['reservedQty'] as num? ?? 0.0).toDouble(),
         description: json['description'] as String? ?? '',
         category: json['category'] as String? ?? 'Services',
       );
@@ -91,7 +104,7 @@ class InvoiceInfo {
     this.invNo = '',
     this.date = '',
     this.dueDate = '',
-    this.currency = '\$',
+    this.currency = '₹',
   });
 
   Map<String, dynamic> toJson() => {
@@ -105,7 +118,7 @@ class InvoiceInfo {
         invNo: json['invNo'] as String? ?? '',
         date: json['date'] as String? ?? '',
         dueDate: json['dueDate'] as String? ?? '',
-        currency: json['currency'] as String? ?? '\$',
+        currency: json['currency'] as String? ?? '₹',
       );
 }
 
@@ -172,6 +185,8 @@ class InvoiceModel {
     this.billTo,
     this.payment,
   });
+
+  String get currency => info?.currency ?? '₹';
 
   Map<String, dynamic> toJson() => {
         'id': id,

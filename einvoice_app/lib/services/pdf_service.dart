@@ -24,10 +24,19 @@ class PdfService {
 
   static Future<pw.Document> _generateDocument(InvoiceModel invoice) async {
     final pdf = pw.Document();
-    final currency = invoice.info?.currency ?? '₹';
+    final currency = invoice.currency;
+    
+    // Load font that supports Rupee symbol
+    final font = await PdfGoogleFonts.robotoRegular();
+    final boldFont = await PdfGoogleFonts.robotoBold();
+    final theme = pw.ThemeData.withFont(
+      base: font,
+      bold: boldFont,
+    );
 
     pdf.addPage(
       pw.Page(
+        theme: theme,
         pageFormat: PdfPageFormat.a4,
         build: (context) {
           return pw.Column(
