@@ -2,6 +2,12 @@
 
 A premium, modern invoicing and stock management application built with Flutter. This tool enables small businesses to manage clients, track inventory, and generate professional PDF invoices with ease.
 
+<div align="center">
+  <h3>✨ App Demonstration</h3>
+  <video src="appsample.mp4" width="400" controls></video>
+</div>
+
+
 ## 🚀 Recent Updates (Inventory Management & UI Overhaul)
 
 This update focuses on transforming the application into a dual-purpose Invoicing and Inventory Management system, with a refined aesthetic and robust data tracking.
