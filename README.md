@@ -5,8 +5,9 @@ A premium, modern invoicing and stock management application built with Flutter.
 <div align="center">
   <h3>✨ App Demonstration</h3>
 
-  ![App Demo](appsample.mp4)
+  <video src="https://github.com/IsmailUmmer/icecream_app/raw/main/appsample.mp4" width="400" controls></video>
 </div>
+
 
 
 
