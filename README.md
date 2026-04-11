@@ -4,9 +4,10 @@ A premium, modern invoicing and stock management application built with Flutter.
 
 <div align="center">
   <h3>✨ App Demonstration</h3>
+  <video src="appsample1.webm" width="100%" style="max-width: 600px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);" controls muted autoplay loop>
+    Your browser does not support the video tag.
+  </video>
 </div>
-
-https://raw.githubusercontent.com/IsmailUmmer/icecream_app/main/appsample.mp4
 
 ## 🚀 Recent Updates (Inventory Management & UI Overhaul)
 
