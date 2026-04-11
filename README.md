@@ -4,9 +4,10 @@ A premium, modern invoicing and stock management application built with Flutter.
 
 <div align="center">
   <h3>✨ App Demonstration</h3>
-  <video src="appsample1.webm" width="100%" style="max-width: 600px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);" controls muted autoplay loop>
-    Your browser does not support the video tag.
-  </video>
+  <a href="https://youtube.com/shorts/N3wMh1F0mVg">
+    <img src="https://img.youtube.com/vi/N3wMh1F0mVg/0.jpg" alt="App Demonstration" width="300" style="border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+  </a>
+  <p><i>Click to watch the app in action on YouTube Shorts</i></p>
 </div>
 
 ## 🚀 Recent Updates (Inventory Management & UI Overhaul)
