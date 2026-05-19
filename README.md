@@ -35,7 +35,7 @@ This update focuses on transforming the application into a dual-purpose Invoicin
 *   **Unified Design System**: Synchronized the color palette of the new Items section with the app's signature Green and White aesthetic.
 *   **Adaptive Navigation**: Restored the classic 5-slot bottom bar with the central (+) FAB, replacing the Profile tab with the high-impact **Items** tab.
 *   **Responsive Onboarding**: Fixed layout overflow issues on the "Get Started" screen for seamless performance on all screen sizes.
-*   **Smart Shortcuts**: The Home screen profile icon now serves as a direct gateway to your personal account settings.
+*   **Smart Shortcuts**: The Home screen profile icon now serves as a direct gateway to your personal account settings. 
 
 ## 🛠️ Tech Stack
 *   **Framework**: Flutter
